@@ -1,2 +1,2 @@
-from . import app
+from . import game
 from . import sqlite
