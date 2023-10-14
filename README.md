@@ -22,7 +22,7 @@ You can perform the following modifications to perform additional customization 
 
 
 
-Colors used in numbers :
+Colors used in numbers 
 -
 <code>#cdc1b5</code> - <span style="color:#cdc1b5">0</span>
 
@@ -53,7 +53,7 @@ Colors used in numbers :
 Leave a comment if you have ideas for additional colors. For numbers after 4096.
 
 
-List of modules needed to create a game :
+List of modules needed to create a game 
 -
 + random
 
