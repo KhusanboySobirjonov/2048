@@ -65,5 +65,5 @@ List of modules needed to create a game
 
 + tkinter
 
-©️<a href="t.me/@uzbek_coder_2022"> Created by Khusanboy Sobirjanov </a>
+©️<a href="t.me/@uzbek_coder_2022"> Created by Khusanboy Sobirjonov </a>
 
