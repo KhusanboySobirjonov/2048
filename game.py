@@ -46,8 +46,10 @@ class Game():
             self.__database.create_table_scores()
         except Exception as er:
             print(er)
-
-        self.__label_best_score.configure(text="Best score : " + str(max([s[1] for s in self.__database.select_all_scores()])))
+        try:
+            self.__label_best_score.configure(text="Best score : " + str(max([s[1] for s in self.__database.select_all_scores()])))
+        except:
+            pass
         self.__max_score = 0
 
         screen_width = self.__root.winfo_screenwidth()
@@ -197,10 +199,10 @@ class Game():
                                     hover=False, font=("Bold", 40), border_color="#bbada0")
                 btn.grid(row=i, column=j, padx=5, pady=5)
         if self.__validation_grid():
-            self.__label_best_score.configure(
-                text="Best score : " + str(max([s[1] for s in self.__database.select_all_scores()])))
             messagebox.showinfo("Game over", f"Max score {self.__max_score}  ")
             self.__database.add_score(Score=self.__max_score, Created_at=datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S"))
+            self.__label_best_score.configure(
+                text="Best score : " + str(max([s[1] for s in self.__database.select_all_scores()])))
             return
 
     def __create_cell(self):
