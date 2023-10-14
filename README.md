@@ -23,9 +23,9 @@ You can perform the following modifications to perform additional customization 
 
 
 Colors used in numbers :
-
+-
 <code>#cdc1b5</code> - <span style="color:#cdc1b5">0</span>
- 
+
 <code>#eee4da</code> - <span style="color:#eee4da">2</span>
 
 <code>#ece0c8</code> - <span style="color:#ece0c8">4</span>
@@ -51,4 +51,19 @@ Colors used in numbers :
 <code>#d2e929</code> - <span style="color:#d2e929">4096</span>
 
 Leave a comment if you have ideas for additional colors. For numbers after 4096.
+
+
+List of modules needed to create a game :
+-
++ random
+
++ sqlite3
+
++ datetime
+
++ customtkinter
+
++ tkinter
+
+©️<a href="t.me/@uzbek_coder_2022"> Created by Khusanboy Sobirjanov </a>
 
