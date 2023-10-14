@@ -35,8 +35,8 @@ class Database:
         sql = """
             CREATE TABLE scores (
                 ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                Score INT NOT NULL DEFAULT 0,
-                Created_at DATETIME NOT NULL,
+                Score INT NOT NULL,
+                Created_at DATETIME NOT NULL
             );
         """
         self.execute(sql, commit=True)
