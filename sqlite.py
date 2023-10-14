@@ -72,6 +72,7 @@ class Database:
     def count_scores(self):
         return self.execute("SELECT COUNT(*) FROM scores;", fetchone=True)
 
+# Bajariluvchi sql kommandalari haqida xabarni ko'rsatadi
 def logger(statement):
     print(f"""
 _____________________________________________________        
