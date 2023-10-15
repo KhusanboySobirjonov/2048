@@ -95,16 +95,22 @@ class Game():
         :return: None
         """
 
-        key_code = event.keycode
+        key_sym = event.keysym
+        print(key_sym)
 
         # Left array key
-        if key_code in [38, 83, 113]:
+        if key_sym in ["Left", "a", "A", "KP_Left"]:
             for i in range(self.__size):
+                for j in range(1, self.__size):
+                    x = j
+                    while x > 0 and self.__matrix[i][x - 1] == 0:
+                        self.__matrix[i][x], self.__matrix[i][x - 1] = self.__matrix[i][x - 1], self.__matrix[i][x]
+                        x -= 1
                 h = False
                 for j in range(1, self.__size):
                     x = j
-                    while x > 0 and (self.__matrix[i][x] == self.__matrix[i][x - 1] or self.__matrix[i][x - 1] == 0):
-                        if self.__matrix[i][x] == self.__matrix[i][x - 1] and self.__matrix[i][x - 1] != 0:
+                    while x > 0 and self.__matrix[i][x] == self.__matrix[i][x - 1]:
+                        if self.__matrix[i][x] == self.__matrix[i][x - 1]:
                             self.__max_score += 2 * self.__matrix[i][x - 1]
                             h = True
                         self.__matrix[i][x - 1] += self.__matrix[i][x]
@@ -121,13 +127,18 @@ class Game():
             self.__create_cell()
 
         # Up array key
-        elif key_code in [25, 80, 111]:
+        elif key_sym in ["Up", "w", "W", "KP_Up"]:
             for i in range(self.__size):
+                for j in range(1, self.__size):
+                    x = j
+                    while x > 0 and self.__matrix[x - 1][i] == 0:
+                        self.__matrix[x][i], self.__matrix[x - 1][i] = self.__matrix[x - 1][i], self.__matrix[x][i]
+                        x -= 1
                 h = False
                 for j in range(1, self.__size):
                     x = j
-                    while x > 0 and (self.__matrix[x][i] == self.__matrix[x - 1][i] or self.__matrix[x - 1][i] == 0):
-                        if self.__matrix[x][i] == self.__matrix[x - 1][i] and self.__matrix[x - 1][i] != 0:
+                    while x > 0 and self.__matrix[x][i] == self.__matrix[x - 1][i]:
+                        if self.__matrix[x][i] == self.__matrix[x - 1][i]:
                             self.__max_score += 2 * self.__matrix[x - 1][i]
                             h = True
                         self.__matrix[x - 1][i] += self.__matrix[x][i]
@@ -144,13 +155,18 @@ class Game():
             self.__create_cell()
 
         # Right array key
-        elif key_code in [40, 85, 114]:
+        elif key_sym in ["Right", "d", "D", "KP_Right"]:
             for i in range(self.__size-1, -1, -1):
                 h = False
                 for j in range(self.__size - 2, -1, -1):
                     x = j
-                    while x < self.__size - 1 and (self.__matrix[i][x] == self.__matrix[i][x + 1] or self.__matrix[i][x + 1] == 0):
-                        if self.__matrix[i][x] == self.__matrix[i][x + 1] and self.__matrix[i][x + 1] != 0:
+                    while x < self.__size - 1 and self.__matrix[i][x + 1] == 0:
+                        self.__matrix[i][x], self.__matrix[i][x + 1] = self.__matrix[i][x + 1], self.__matrix[i][x]
+                        x += 1
+                for j in range(self.__size - 2, -1, -1):
+                    x = j
+                    while x < self.__size - 1 and self.__matrix[i][x] == self.__matrix[i][x + 1]:
+                        if self.__matrix[i][x] == self.__matrix[i][x + 1]:
                             self.__max_score += 2 * self.__matrix[i][x + 1]
                             h = True
                         self.__matrix[i][x + 1] += self.__matrix[i][x]
@@ -166,13 +182,18 @@ class Game():
             self.__create_cell()
 
         # Down arrow key
-        elif key_code in [39, 84, 116]:
+        elif key_sym in ["Down", "s", "S", "KP_Down"]:
             for i in range(self.__size-1, -1, -1):
+                for j in range(self.__size - 2, -1, -1):
+                    x = j
+                    while x < self.__size - 1 and self.__matrix[x + 1][i] == 0:
+                        self.__matrix[x][i], self.__matrix[x + 1][i] = self.__matrix[x+1][i], self.__matrix[x][i]
+                        x += 1
                 h = False
                 for j in range(self.__size-2, -1, -1):
                     x = j
-                    while x < self.__size - 1 and (self.__matrix[x][i] == self.__matrix[x+1][i] or self.__matrix[x+1][i] == 0):
-                        if self.__matrix[x][i] == self.__matrix[x+1][i] and self.__matrix[x+1][i] != 0:
+                    while x < self.__size - 1 and self.__matrix[x][i] == self.__matrix[x+1][i]:
+                        if self.__matrix[x][i] == self.__matrix[x+1][i]:
                             self.__max_score += 2 * self.__matrix[x+1][i]
                             h = True
                         self.__matrix[x+1][i] += self.__matrix[x][i]
